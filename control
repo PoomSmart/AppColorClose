@@ -1,0 +1,9 @@
+Name: AppColorClose
+Package: org.thebigboss.appcolorclose
+Author: PoomSmart
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Depends: firmware (>= 7.0), mobilesubstrate, preferenceloader
+Section: Tweaks
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Tint app close box based on app icon color.
