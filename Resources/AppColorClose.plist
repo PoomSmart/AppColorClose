@@ -19,9 +19,9 @@
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>label</key>
-        <string>Tint Alpha</string>
+        <string>Tint opacity</string>
         <key>footerText</key>
-        <string>Tint color alpha of app close box.</string>
+        <string>Tint color opacity of app close box.</string>
       </dict>
       <dict>
 			<key>cell</key>
@@ -39,11 +39,35 @@
 			<key>showValue</key>
 			<true/>
 		</dict>
+    <dict>
+      <key>cell</key>
+      <string>PSGroupCell</string>
+      <key>label</key>
+      <string>Border width</string>
+      <key>footerText</key>
+      <string>Border width of app close box.</string>
+    </dict>
+    <dict>
+    <key>cell</key>
+    <string>PSSliderCell</string>
+    <key>default</key>
+    <real>0.0</real>
+    <key>defaults</key>
+    <string>com.apple.springboard</string>
+    <key>key</key>
+    <string>SBCloseBoxBorderWidth</string>
+    <key>max</key>
+    <real>2.5</real>
+    <key>min</key>
+    <real>0.0</real>
+    <key>showValue</key>
+    <true/>
+  </dict>
       <dict>
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>footerText</key>
-        <string>© 2013 - 2015 Thatchapon Unprasert
+        <string>© 2013 - 2017 Thatchapon Unprasert
 (@PoomSmart)</string>
       </dict>
     </array>
