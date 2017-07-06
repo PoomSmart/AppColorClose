@@ -22,16 +22,20 @@ struct pixel {
 
 static UIColor *dominantColorFromIcon(SBIcon *icon) {
     UIImage *iconImage = [icon getIconImage:2];
+    CGImageRef iconCGImage = iconImage.CGImage;
     NSUInteger red = 0;
     NSUInteger green = 0;
     NSUInteger blue = 0;
-    CGImageRef iconCGImage = iconImage.CGImage;
-    struct pixel *pixels = (struct pixel *)calloc(1, iconImage.size.width * iconImage.size.height * sizeof(struct pixel));
+    size_t width = CGImageGetWidth(iconCGImage);
+    size_t height = CGImageGetHeight(iconCGImage);
+    int bitmapBytesPerRow = width * 4;
+    int bitmapByteCount = bitmapBytesPerRow * height;
+    struct pixel *pixels = (struct pixel *)malloc(bitmapByteCount);
     if (pixels) {
-        CGContextRef context = CGBitmapContextCreate((void *)pixels, iconImage.size.width, iconImage.size.height, 8, iconImage.size.width * 4, CGImageGetColorSpace(iconCGImage), kCGImageAlphaPremultipliedLast);
-        if (context != NULL) {
-            CGContextDrawImage(context, CGRectMake(0.0, 0.0, iconImage.size.width, iconImage.size.height), iconCGImage);
-            NSUInteger numberOfPixels = iconImage.size.width * iconImage.size.height;
+        CGContextRef context = CGBitmapContextCreate((void *)pixels, width, height, 8, bitmapBytesPerRow, CGImageGetColorSpace(iconCGImage), kCGImageAlphaPremultipliedLast);
+        if (context) {
+            CGContextDrawImage(context, CGRectMake(0.0, 0.0, width, height), iconCGImage);
+            NSUInteger numberOfPixels = width * height;
             for (int i = 0; i < numberOfPixels; i++) {
                 red += pixels[i].r;
                 green += pixels[i].g;
@@ -44,7 +48,7 @@ static UIColor *dominantColorFromIcon(SBIcon *icon) {
         }
         free(pixels);
     }
-    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
 }
 
 static CGFloat readValue(NSString *key, CGFloat defaultValue) {
@@ -64,7 +68,7 @@ static CGFloat readValue(NSString *key, CGFloat defaultValue) {
     if (closeBox && !closeBox.hidden) {
         UIColor *dominantColor = dominantColorFromIcon(self.icon);
         MSHookIvar<UIView *>(closeBox, "_whiteTintView").backgroundColor = dominantColor;
-        CGFloat tintAlpha = readValue(@"SBCloseBoxTintAlpha", 0.65);
+        CGFloat tintAlpha = readValue(@"SBCloseBoxTintAlpha", 0.85);
         MSHookIvar<UIView *>(closeBox, "_whiteTintView").alpha = tintAlpha;
         CGFloat borderWidth = readValue(@"SBCloseBoxBorderWidth", 0.0);
         MSHookIvar<UIView *>(closeBox, "_whiteTintView").layer.borderWidth = borderWidth;
@@ -77,3 +81,23 @@ static CGFloat readValue(NSString *key, CGFloat defaultValue) {
 }
 
 %end
+
+#ifdef TARGET_OS_SIMULATOR
+
+%hook SBIconColorSettings
+
+- (BOOL)closeBoxesEverywhere {
+    return YES;
+}
+
+%end
+
+%hook SBIconView
+
+- (BOOL)iconViewDisplaysCloseBox: (id)arg1 {
+    return YES;
+}
+
+%end
+
+#endif
