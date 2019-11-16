@@ -1,0 +1,10 @@
+Name: AppColorClose iOS 12+
+Package: com.spicat.appcolorclose
+Author: Spica T
+Maintainer: Spica T
+Depends: firmware (>= 12.0), mobilesubstrate, preferenceloader
+Conflicts: org.thebigboss.appcolorclose
+Section: Tweaks
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Tint app close box based on app icon color.

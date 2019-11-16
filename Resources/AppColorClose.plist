@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>title</key>
+    <string>AppColorClose</string>
+    <key>entry</key>
+    <dict>
+      <key>cell</key>
+      <string>PSLinkCell</string>
+      <key>icon</key>
+      <string>AppColorClose.png</string>
+      <key>label</key>
+      <string>AppColorClose</string>
+    </dict>
+    <key>items</key>
+    <array>
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>Tint opacity</string>
+        <key>footerText</key>
+        <string>Tint color opacity of app close box.</string>
+      </dict>
+      <dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.65</real>
+			<key>defaults</key>
+			<string>com.apple.springboard</string>
+			<key>key</key>
+			<string>SBCloseBoxTintAlpha</string>
+			<key>max</key>
+			<real>1.0</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>showValue</key>
+			<true/>
+		</dict>
+    <dict>
+      <key>cell</key>
+      <string>PSGroupCell</string>
+      <key>label</key>
+      <string>Border width</string>
+      <key>footerText</key>
+      <string>Border width of app close box.</string>
+    </dict>
+    <dict>
+    <key>cell</key>
+    <string>PSSliderCell</string>
+    <key>default</key>
+    <real>0.0</real>
+    <key>defaults</key>
+    <string>com.apple.springboard</string>
+    <key>key</key>
+    <string>SBCloseBoxBorderWidth</string>
+    <key>max</key>
+    <real>2.5</real>
+    <key>min</key>
+    <real>0.0</real>
+    <key>showValue</key>
+    <true/>
+  </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>footerText</key>
+        <string>© 2019 Spica T</string>
+      </dict>
+    </array>
+  </dict>
+</plist>
