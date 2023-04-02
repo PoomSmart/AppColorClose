@@ -19,55 +19,55 @@
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>label</key>
-        <string>Tint opacity</string>
+        <string>Tint Opacity</string>
         <key>footerText</key>
         <string>Tint color opacity of app close box.</string>
       </dict>
       <dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>default</key>
-			<real>0.65</real>
-			<key>defaults</key>
-			<string>com.apple.springboard</string>
-			<key>key</key>
-			<string>SBCloseBoxTintAlpha</string>
-			<key>max</key>
-			<real>1.0</real>
-			<key>min</key>
-			<real>0.0</real>
-			<key>showValue</key>
-			<true/>
-		</dict>
-    <dict>
-      <key>cell</key>
-      <string>PSGroupCell</string>
-      <key>label</key>
-      <string>Border width</string>
-      <key>footerText</key>
-      <string>Border width of app close box.</string>
-    </dict>
-    <dict>
-    <key>cell</key>
-    <string>PSSliderCell</string>
-    <key>default</key>
-    <real>0.0</real>
-    <key>defaults</key>
-    <string>com.apple.springboard</string>
-    <key>key</key>
-    <string>SBCloseBoxBorderWidth</string>
-    <key>max</key>
-    <real>2.5</real>
-    <key>min</key>
-    <real>0.0</real>
-    <key>showValue</key>
-    <true/>
-  </dict>
+        <key>cell</key>
+        <string>PSSliderCell</string>
+        <key>default</key>
+        <real>0.65</real>
+        <key>defaults</key>
+        <string>com.apple.springboard</string>
+        <key>key</key>
+        <string>SBCloseBoxTintAlpha</string>
+        <key>max</key>
+        <real>1.0</real>
+        <key>min</key>
+        <real>0.0</real>
+        <key>showValue</key>
+        <true/>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>Border Width</string>
+        <key>footerText</key>
+        <string>Border width of app close box.</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSSliderCell</string>
+        <key>default</key>
+        <real>0.0</real>
+        <key>defaults</key>
+        <string>com.apple.springboard</string>
+        <key>key</key>
+        <string>SBCloseBoxBorderWidth</string>
+        <key>max</key>
+        <real>2.5</real>
+        <key>min</key>
+        <real>0.0</real>
+        <key>showValue</key>
+        <true/>
+      </dict>
       <dict>
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>footerText</key>
-        <string>© 2019 Spica T</string>
+        <string>© 2021 - 2023 PoomSmart</string>
       </dict>
     </array>
   </dict>
