@@ -5,7 +5,7 @@
 #import <UIKit/UIImage+Private.h>
 
 @interface SBIconView (AppColorClose)
-@property(retain, nonatomic) UIColor *dominantColor;
+@property (retain, nonatomic) UIColor *dominantColor;
 @end
 
 @interface SBHomeScreenMaterialView : UIView
@@ -83,7 +83,7 @@ static void setColor(SBIconView *self, SBIcon *icon) {
 
 %hook SBIconView
 
-%property(retain, nonatomic) UIColor *dominantColor;
+%property (retain, nonatomic) UIColor *dominantColor;
 
 - (void)_updateCloseBoxAnimated:(BOOL)animated {
     %orig;
