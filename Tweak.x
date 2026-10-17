@@ -27,17 +27,20 @@ struct pixel {
 
 static UIColor *dominantColorFromIcon(SBIcon *icon) {
     UIImage *iconImage = nil;
-    if (@available(iOS 13.0, *))
-        iconImage = [icon generateIconImageWithInfo:(SBIconImageInfo) { .size = CGSizeMake(48, 48), .scale = 1, .continuousCornerRadius = 12 }];
-    else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
+    if ([icon respondsToSelector:@selector(iconImageWithInfo:)])
+        iconImage = [icon iconImageWithInfo:(SBIconImageInfo) { .size = CGSizeMake(48, 48), .scale = 1, .continuousCornerRadius = 12 }];
+    else if ([icon respondsToSelector:@selector(getIconImage:)])
         iconImage = [icon getIconImage:2];
+#pragma clang diagnostic pop
     if (iconImage == nil)
         return [UIColor blackColor];
     NSUInteger red = 0, green = 0, blue = 0;
     CGImageRef iconCGImage = iconImage.CGImage;
     struct pixel *pixels = (struct pixel *)calloc(1, iconImage.size.width * iconImage.size.height * sizeof(struct pixel));
     if (pixels != nil)     {
-        CGContextRef context = CGBitmapContextCreate((void *)pixels, iconImage.size.width, iconImage.size.height, 8, iconImage.size.width * 4, CGImageGetColorSpace(iconCGImage), kCGImageAlphaPremultipliedLast);
+        CGContextRef context = CGBitmapContextCreate((void *)pixels, iconImage.size.width, iconImage.size.height, 8, iconImage.size.width * 4, CGImageGetColorSpace(iconCGImage), (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
         if (context != NULL) {
             CGContextDrawImage(context, CGRectMake(0.0, 0.0, iconImage.size.width, iconImage.size.height), iconCGImage);
             NSUInteger numberOfPixels = iconImage.size.width * iconImage.size.height;
