@@ -1,6 +1,6 @@
 ifeq ($(SIMULATOR),1)
 	TARGET = simulator:clang:latest:12.0
-	ARCHS = x86_64
+	ARCHS = arm64 x86_64
 else
 	ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
 		TARGET = iphone:clang:16.5:15.0
